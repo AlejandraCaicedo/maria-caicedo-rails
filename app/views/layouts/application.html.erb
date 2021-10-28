@@ -35,11 +35,12 @@
               <div class="text-base font-medium text-gray-500 hover:text-gray-900">
                 <%= link_to "Articles", new_article_path %>
               </div>
+
               <div class="text-base font-medium text-gray-500 hover:text-gray-900">
-                <%= link_to "Docs", new_user_session_path %>
+                <%= link_to "Docs", root_path %>
               </div>
               <div class="text-base font-medium text-gray-500 hover:text-gray-900">
-                <%= link_to "Publications", edit_user_registration_path %>
+                <%= link_to "Publications", root_path %>
               </div>
       
               <div class="relative">
@@ -54,7 +55,7 @@
               <% if user_signed_in? %>
                 <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                   <div class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-                    <%= link_to "Log out", destroy_user_session_path %>
+                    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
                   </div>
                 </div>
               <% else %>
@@ -77,6 +78,12 @@
   </head>
 
   <body>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
     <%= yield %>
   </body>
 
