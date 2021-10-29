@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   root "articles#index"
   
+  resources :relationships
   resources :users
   resources :articles do
     resources :comments
