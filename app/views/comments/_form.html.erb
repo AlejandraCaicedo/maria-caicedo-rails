@@ -1,17 +1,27 @@
-<%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.label :status %><br>
-    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<div class="min-h-full flex items-center justify-center pt-4 pb-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8">
+    <div class="mt-8 space-y-6">
+
+      <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+        <p>
+          <%= form.label :commenter, class: "text-sm text-gray-900"%>
+          <%= form.text_field :commenter, autofocus: true, autocomplete: "commenter" , placeholder: "Commenter name", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %> <br />
+        </p>
+        <p>
+          <%= form.label :body, class: "text-sm text-gray-900"%>
+          <%= form.text_area :body, autofocus: true, autocomplete: "body" , placeholder: "Body comment", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %> <br />
+        </p>
+        <p>
+          <%= form.label :status, class: "text-sm text-gray-900" %>
+          <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %> <br />
+        </p>
+
+        <p>
+          <button class="group relative w-full flex justify-center py-2 px-4 my-5 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create comment</button>
+        </p>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
