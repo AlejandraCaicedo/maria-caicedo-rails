@@ -6,8 +6,12 @@ Rails.application.routes.draw do
 
   root "articles#index"
   
-  resources :relationships
-  resources :users
+  resources :relationships, only: [:destroy]
+  
+  resources :users do
+    resources :relationships, only: [:create]
+  end
+
   resources :articles do
     resources :comments
   end
