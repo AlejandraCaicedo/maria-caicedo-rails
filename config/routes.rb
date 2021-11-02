@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
+
+  devise_for :users, controllers: do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
-  }
+  end
 
   root "articles#index"
   
