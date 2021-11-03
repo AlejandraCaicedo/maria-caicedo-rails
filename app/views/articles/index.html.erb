@@ -28,7 +28,11 @@
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="flex items-center">
                       <div class="flex-shrink-0 h-10 w-10">
-                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                        <% if article.user.gender == 'Female' %>
+                          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                        <% else %>
+                          <img class="h-10 w-10 rounded-full" src="https://image.freepik.com/foto-gratis/feliz-joven_1098-20869.jpg" alt="">
+                        <% end %>
                       </div>
                       <div class="ml-4">
                         <% if current_user == article.user %>
@@ -66,19 +70,14 @@
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <div class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
-                      <div class="text-indigo-600 hover:text-indigo-900">
-                        <%= link_to "Read", article %>
+                      <div class="inline-flex">
+                        <%= link_to "Read", article, class: "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l" %>
+                        <% if current_user == article.user %>
+                          <%= link_to "Edit", edit_article_path(article), class: "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 " %>
+                          <%= link_to "Destroy", article_path(article), method: :delete, 
+                            class: "bg-gray-300 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-r ", data: { confirm: "Are you sure?" } %>
+                        <% end %>
                       </div>
-                      <% if current_user == article.user %>
-                        <div class="text-indigo-600 hover:text-indigo-900">
-                          <%= link_to "Edit", edit_article_path(article) %>
-                        </div>
-                        <div class="text-indigo-600 hover:text-indigo-900">
-                          <%= link_to "Destroy", article_path(article),
-                            method: :delete,
-                            data: { confirm: "Are you sure?" } %>
-                        </div>
-                      <% end %>
                     </div>
                   </td>
                 </tr>
