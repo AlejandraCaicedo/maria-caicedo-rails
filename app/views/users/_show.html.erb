@@ -1,0 +1,8 @@
+<% relationship = user.followers.find_by(follower: current_user) %>
+<% unless relationship.nil? %>
+  <%= link_to 'Unfollow', relationship_path(relationship), method: :delete, 
+    class: "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 ", data: { confirm: 'Are you sure?' } %>
+<% else %>
+  <%= link_to 'Follow', user_relationships_path(user), method: :post,
+    class: "bg-green-400 hover:bg-green-400 text-gray-800 font-bold py-2 px-4 ", data: { confirm: 'You want to follow this user?' } %>
+<% end %>

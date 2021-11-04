@@ -13,13 +13,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :articles, dependent: :destroy
 
-  has_many :followers, foreign_key: 'follower_id', class_name: 'Relationship'
-  has_many :followed, foreign_key: 'followed_id', class_name: 'Relationship'
-
-  def have_relation?(followed_id, current_user_id)
-    Relationship.where(
-      follower: current_user_id,
-      followed: followed_id).blank?
-  end
+  has_many :following, foreign_key: 'follower_id', class_name: 'Relationship'
+  has_many :followers, foreign_key: 'followed_id', class_name: 'Relationship'
 
 end
