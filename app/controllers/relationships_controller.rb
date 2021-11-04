@@ -3,17 +3,12 @@ class RelationshipsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    followed = User.find(params[:user_id])
+    other_user = User.find(params[:user_id])
     @relationship = Relationship.new(
       follower_id: current_user.id,
-      followed_id: followed.id
-    )
-
-    if @relationship.save
-      redirect_to users_path
-    else
-      render :root_path
-    end
+      followed_id: other_user.id)
+    @relationship.save
+    redirect_to users_path
   end
 
   def destroy
@@ -24,5 +19,5 @@ class RelationshipsController < ApplicationController
       render :root_path
     end
   end
-
+  
 end

@@ -8,10 +8,12 @@ class User < ApplicationRecord
 
   validates :email, presence: true
   validates :username, presence: true
+  validates :gender, presence: true
 
   has_many :comments, dependent: :destroy
   has_many :articles, dependent: :destroy
 
-  has_many :followers, foreign_key: 'follower_id', class_name: 'Relationship'
-  has_many :followed, foreign_key: 'followed_id', class_name: 'Relationship'
+  has_many :following, foreign_key: 'follower_id', class_name: 'Relationship'
+  has_many :followers, foreign_key: 'followed_id', class_name: 'Relationship'
+
 end
