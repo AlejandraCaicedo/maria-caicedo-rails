@@ -24,53 +24,53 @@
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
             <% @users.each do |user| %>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-10 w-10">
+                      <% if user.gender == 'Female' %>
+                        <img class="h-10 w-10 rounded-full" src="https://cdn-icons-png.flaticon.com/512/2922/2922561.png" alt="">
+                      <% else %>
+                        <img class="h-10 w-10 rounded-full" src="https://cdn-icons-png.flaticon.com/512/265/265674.png" alt="">
+                      <% end %>
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm font-medium text-gray-900">
+                        <%= user.username %>
+                      </div>
+                      <div class="text-sm text-gray-500">
+                        <%= user.email %>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    <%= user.articles.size %>
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    <%= user.followers.count %>
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    <%= user.following.count %>
+                  </span>
+                </td>
               <% if current_user != user %>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="flex items-center">
-                      <div class="flex-shrink-0 h-10 w-10">
-                        <% if user.gender == 'Female' %>
-                          <img class="h-10 w-10 rounded-full" src="https://cdn-icons-png.flaticon.com/512/2922/2922561.png" alt="">
-                        <% else %>
-                          <img class="h-10 w-10 rounded-full" src="https://cdn-icons-png.flaticon.com/512/265/265674.png" alt="">
-                        <% end %>
-                      </div>
-                      <div class="ml-4">
-                        <div class="text-sm font-medium text-gray-900">
-                          <%= user.username %>
-                        </div>
-                        <div class="text-sm text-gray-500">
-                          <%= user.email %>
-                        </div>
-                      </div>
+                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <div class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+                    <div class="inline-flex">
+                      <%= render "show", user: user %>
                     </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                      <%= user.articles.size %>
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                      <%= user.followers.count %>
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                      <%= user.following.count %>
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <div class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
-                      <div class="inline-flex">
-                        <%= render "show", user: user %>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                </tr>
+                  </div>
+                </td>
               <% end %>
-            <% end %>
-          </tbody>
+            </tr>
+            </tr>
+          <% end %>
+        </tbody>
         </table>
       </div>
     </div>
