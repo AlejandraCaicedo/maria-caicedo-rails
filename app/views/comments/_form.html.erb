@@ -3,12 +3,9 @@
     <div class="mt-8 space-y-6">
 
       <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+
         <p>
-          <%= form.label :commenter, class: "text-sm text-gray-900"%>
-          <%= form.text_field :commenter, autofocus: true, autocomplete: "commenter" , placeholder: "Commenter name", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %> <br />
-        </p>
-        <p>
-          <%= form.label :body, class: "text-sm text-gray-900"%>
+          <%= form.label :body, class: "text-sm text-gray-900"%> 
           <%= form.text_area :body, autofocus: true, autocomplete: "body" , placeholder: "Body comment", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %> <br />
         </p>
         <p>

@@ -4,7 +4,7 @@
 
       <p>
         <strong>Commenter:</strong>
-        <%= comment.commenter %>
+        <%= comment.user.username %>
       </p>
 
       <p>
@@ -14,7 +14,7 @@
 
       <p>
         <% if user_signed_in? %>
-          <% if current_user.username == comment.commenter %>
+          <% if (current_user.username == comment.user.username) || (current_user.username == comment.article.user.username) %>
             <%= link_to 'Destroy Comment', [comment.article, comment],
                         method: :delete, data: { confirm: "Are you sure?" },
                         class:"group relative w-full flex justify-center py-2 px-4 my-5 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
